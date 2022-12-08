@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RunSys - Users</title>
+    <!-- favi.icon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/assets.style.css">
+</head>
+
+<body class="min-vh-100">
+
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="/dashboard">Run<i class="bi bi-gear-wide"></i>Sys</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/dashboard"><i
+                                class="bi bi-speedometer"></i>&nbsp&nbspDashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/management"><i class="bi bi-gear"></i>&nbsp&nbspManagement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/network-assets"><i
+                                class="bi bi-hdd-network-fill"></i>&nbsp&nbspNetwork
+                            Assets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/users-list"><i class="bi bi-people"></i>&nbsp&nbspUsers</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-flex">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#"><i class="bi bi-person-circle"></i>&nbsp&nbspUser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/"><i
+                                class="bi bi-box-arrow-right"></i>&nbsp&nbspLogout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-3">
+        <div class="card col-12 col-md-12 col-lg-12">
+            <div class="card-body bg-light rounded-1">
+                <div class="row justify-content-between mb-5">
+                    <div class="col-12 col-lg-12">
+                        <button class="btn btn-secondary float-end w-25" type="button" id="btn-addAsset"
+                            data-bs-toggle="modal" data-bs-target="#modalAddUsers"><i
+                                class="bi bi-plus-square-fill"></i>&nbsp&nbspAdd Asset</button>
+                    </div>
+                </div>
+                <table class="table table-striped table-sm" id="table-users">
+                    <thead>
+                        <tr>
+                            <th>User Id</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal Add Users -->
+    <div class="modal fade" id="modalAddUsers" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Users</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form class="row g-3">
+                            <div class="col-12">
+                                <label for="modal-add-username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="modal-add-username"
+                                    placeholder="Enter Username" name="modal-add-username">
+                            </div>
+                            <div class="col-12">
+                                <label for="modal-add-email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="modal-add-email" placeholder="Enter E-mail"
+                                    name="modal-add-email">
+                            </div>
+                            <div class="col-12">
+                                <label for="modal-add-password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="modal-add-password"
+                                    placeholder="Enter a Password" name="modal-add-password">
+                            </div>
+                            <div class="col-12">
+                                <label for="modal-add-confirm-password" class="form-label">Confirm the Password</label>
+                                <input type="password" class="form-control" id="modal-add-confirm-password"
+                                    placeholder="Type the password again" name="modal-add-confirm-password">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update Users -->
+    <div class="modal fade" id="modalUpdateUsers" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Users</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form class="row g-3">
+                            <div class="col-12">
+                                <label for="modal-update-username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="modal-update-username"
+                                    placeholder="Enter Username" name="modal-update-username">
+                            </div>
+                            <div class="col-12">
+                                <label for="modal-update-email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="modal-update-email"
+                                    placeholder="Enter a E-mail" name="modal-update-email">
+                            </div>
+                            <div class="col-12">
+                                <label for="modal-update-password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="modal-update-password"
+                                    placeholder="Enter a Password" name="modal-update-password">
+                            </div>
+                            <div class="col-12">
+                                <label for="modal-update-confirm-password" class="form-label">Confirm the
+                                    Password</label>
+                                <input type="password" class="form-control" id="modal-update-confirm-password"
+                                    placeholder="Type the password again" name="modal-update-confirm-password">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Delete Assets -->
+    <div class="modal fade" id="modalDeleteUsers" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete Users</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <h4>Are you sure you want to delete this asset?</h4>
+                        <p>
+                            <strong>User Id:</strong> <span id="modal-delete-id"></span><br>
+                            <strong>Username:</strong> <span id="modal-delete-username"></span><br>
+                            <strong>Password:</strong> <span id="modal-delete-password"></span><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/users.main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RunSys - Management</title>
+    <!-- favi.icon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="xterm/css/xterm.css">
+    <link rel="stylesheet" href="css/management.style.css">
+</head>
+
+<body class="min-vh-100">
+
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="/dashboard">Run<i class="bi bi-gear-wide"></i>Sys</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/dashboard"><i
+                                class="bi bi-speedometer"></i>&nbsp&nbspDashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/management"><i class="bi bi-gear"></i>&nbsp&nbspManagement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/network-assets"><i
+                                class="bi bi-hdd-network-fill"></i>&nbsp&nbspNetwork
+                            Assets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users-list"><i class="bi bi-people"></i>&nbsp&nbspUsers</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-flex">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-person-circle"></i>&nbsp&nbspUser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/"><i
+                                class="bi bi-box-arrow-right"></i>&nbsp&nbspLogout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-3">
+        <div class="row  align-items-center">
+            <div class="col-4 col-sm-12 col-lg-4">
+                <div class="card bg-light">
+                    <div class="card-body" id="card-asset">
+                        <form class="row g-3">
+                            <div class="col-12">
+                                <label for="inputAddress" class="form-label">Select one asset</label>
+                                <select class="form-select" aria-label="Select Asset" id="form-selec">
+                                    <option selected>Open this select menu</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputAddress" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="inputUsername" name="inputUsername">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputAddress" class="form-label">Port</label>
+                                <input type="number" class="form-control" id="inputPort" name="inputPort">
+                            </div>
+                            <div class="col-12">
+                                <label for="inputAddress2" class="form-label">Password</label>
+                                <input type="text" class="form-control" id="inputPassword" name="inputPassword">
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary" id="startConnection">Start
+                                    Connection</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-8 col-sm-12 col-lg-8">
+                <div class="card">
+                    <div class="card-body" id="terminal">
+                        <div id="terminal-container"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- socket.io -->
+    <script src="socket.io/socket.io.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="xterm/lib/xterm.js"></script>
+    <script type="module" src="js/management.main.js"></script>
+</body>
+
+</html>
