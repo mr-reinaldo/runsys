@@ -1,0 +1,28 @@
+body {
+    background-color: #d7dde3;
+}
+
+.card .card-body#terminal {
+    background-color: #000000;
+}
+
+#card-asset {
+    height: 64vh;
+    margin-top: 5vh;
+}
+
+#terminal-container {
+    height: 64vh;
+    margin: 0 auto;
+    padding: 2px;
+}
+
+#terminal-container .terminal {
+    background-color: #111;
+    color: #fafafa;
+    padding: 2px;
+}
+
+#terminal-container .terminal:focus .terminal-cursor {
+    background-color: #fafafa;
+}

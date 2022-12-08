@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>RunSys - Dashboard</title>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/dashboard.style.css">
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">Run<i class="bi bi-gear-wide"></i>Sys</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dashboard"><i
+                                class="bi bi-speedometer"></i>&nbsp&nbspDashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-gear"></i>&nbsp&nbspManagement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/network-assets"><i
+                                class="bi bi-hdd-network-fill"></i>&nbsp&nbspNetwork Assets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users-list"><i class="bi bi-people"></i>&nbsp&nbspUsers</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-flex">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-person-circle"></i>&nbsp&nbspUser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="/"><i
+                                class="bi bi-box-arrow-right"></i>&nbsp&nbspLogout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row py-3">
+            <div class="col-12 col-lg-4">
+                <div class="card bg-light shadow" id="card-cpu">
+
+                    <div class="card-body">
+                        <canvas id="chart-cpu" style="position: relative; height:26vh; width:100%"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4 mt-3 mt-lg-0">
+                <div class="card bg-light shadow" id="card-ram">
+
+                    <div class="card-body">
+                        <canvas id="chart-ram" style="position: relative; height:26vh; width:100%"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4 mt-3 mt-lg-0">
+                <div class="card bg-light shadow" id="card-disk">
+
+                    <div class="card-body">
+                        <canvas id="chart-disk" style="position: relative; height:26vh; width:100%"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row py-3">
+            <div class="col-12 col-lg-8 ">
+                <div class="card bg-light shadow" id="card-net">
+
+                    <div class="card-body">
+                        <canvas id="chart-net" style="position: relative; height:36vh; width:100%"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4 mt-3 mt-lg-0">
+                <div class="card bg-light shadow" id="card-net-rx">
+
+                    <div class="card-body">
+                        <table class="table" style="position: relative; height:30.9vh; width:100%">
+                            <tbody id="tbodyInformation">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!--Socket.io-->
+        <script src="socket.io/socket.io.js"></script>
+        <!-- Chart JS-->
+        <script src="chart.js/dist/chart.umd.js"></script>
+        <!--Dashboard-->
+        <script type="module" src="js/dashboard.main.js"></script>
+</body>
+
+</html>

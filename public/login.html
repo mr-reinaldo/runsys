@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RunSys - Login</title>
+    <!-- favi.icon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/login.style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card col-lg-5 col-md-6 col-12 mx-auto p-3 py-5 bg-light shadow">
+            <div class="card-body">
+                <h2 class="text-center mb-4">Run<i class="bi bi-gear-wide"></i>Sys</h2>
+                <p class="text-center text-secondary"><small>Sign in With</small></p>
+                <form class="needs-validation" novalidate>
+                    <div class="form-group d-flex mb-4 px-3 shadow-sm rounded-1 has-validation position-relative">
+                        <i class="bi bi-envelope-at-fill my-auto"></i>
+                        <input type="email" autocomplete="off" class="form-control" id="email" placeholder="E-mail"
+                            name="email" required>
+                        <div class="invalid-tooltip rounded-1">
+                            <small> Enter the user's email.</small>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex mb-3 px-3 shadow-sm rounded-1 has-validation position-relative">
+                        <i class="bi bi-shield-lock-fill my-auto"></i>
+                        <input type="password" autocomplete="off" class="form-control " id="password"
+                            placeholder="Password" name="password" minlength="8" required>
+                        <div class="invalid-tooltip rounded-1">
+                            <small> Enter the password with 8 characters or more.</small>
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <button type="submit" class="btn btn-secondary w-50 rounded-1">Sign in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="position-absolute top-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast bg-warning" role="alert" aria-live="assertive" aria-atomic="true"
+                data-bs-delay="4000">
+                <div class="toast-header">
+                    <strong class="me-auto"></strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="js/login.main.js"></script>
+</body>
+
+</html>
