@@ -3,9 +3,9 @@ import Auth from './auth.js';
 async function getServerInformation() {
 
     // Create charts
-    const chartCpu = creatChartSimple('chart-cpu', 'line', 'CPU');
-    const chartRam = creatChartSimple('chart-ram', 'line', 'RAM');
-    const chartDisk = creatChartSimple('chart-disk', 'line', 'Disk');
+    const chartCpu = creatChartSimple('chart-cpu', 'line', 'CPU', 'rgba(255, 99, 132, 0.2)', 'rgba(255, 99, 132, 1)');
+    const chartRam = creatChartSimple('chart-ram', 'bar', 'RAM', 'rgba(54, 162, 235, 0.2)', 'rgba(54, 162, 235, 1)');
+    const chartDisk = creatChartSimple('chart-disk', 'bar', 'Disk', 'rgba(255, 206, 86, 0.2)', 'rgba(255, 206, 86, 1)');
     const chartNetwork = createChartDobleLine('chart-net', 'line', 'Download', 'Upload');
 
     setInterval(async () => {
@@ -28,7 +28,7 @@ async function getServerInformation() {
         // update information
         createTbodyInformation('tbodyInformation', data);
 
-    }, 2000);
+    }, 1000);
 
 }
 
@@ -58,7 +58,7 @@ function createTbodyInformation(idTbody, data) {
     `;
 }
 
-function creatChartSimple(idChart, typeChart, label) {
+function creatChartSimple(idChart, typeChart, label, backgroundColor, borderColor) {
 
     const ctx = document.getElementById(`${idChart}`).getContext('2d');
 
@@ -69,16 +69,18 @@ function creatChartSimple(idChart, typeChart, label) {
             datasets: [{
                 label: `${label}`,
                 data: [],
-                borderWidth: 1
+                borderWidth: 2,
+                backgroundColor: `${backgroundColor}`,
+                borderColor: `${borderColor}`,
             }]
         },
         options: {
-
             scales: {
                 y: {
-                    beginAtZero: true
+                    min: 0,
+                    max: 100,
                 }
-            }
+            },
         }
     });
 
@@ -102,23 +104,35 @@ function createChartDobleLine(idChart, typeChart, label1, label2) {
             datasets: [{
                 label: `${label1}`,
                 data: [],
-                borderWidth: 1
+                borderWidth: 2,
             },
             {
                 label: `${label2}`,
                 data: [],
-                borderWidth: 1
+                borderWidth: 2,
             }]
         },
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    min: 0,
+                    display: true,
+                    position: 'left',
                 },
                 x: {
-                    beginAtZero: true
+                    min: 0,
+                    display: true,
+                    position: 'right',
                 }
-            }
+            },
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+                axis: 'x'
+            },
+            stacked: false,
+
         }
     });
 
@@ -169,6 +183,8 @@ async function main() {
 }
 
 if (Auth.isAuthenticated()) {
+    Auth.userLogged();
+    Auth.autoSignout();
     main();
 }
 

@@ -26,23 +26,24 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/dashboard"><i
-                                class="bi bi-speedometer"></i>&nbsp&nbspDashboard</a>
+                                class="bi bi-speedometer"></i>&nbsp;&nbsp;Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/management"><i class="bi bi-gear"></i>&nbsp&nbspManagement</a>
+                        <a class="nav-link" href="/management"><i class="bi bi-gear"></i>&nbsp;&nbsp;Management</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/network-assets"><i
-                                class="bi bi-hdd-network-fill"></i>&nbsp&nbspNetwork
+                                class="bi bi-hdd-network-fill"></i>&nbsp;&nbsp;Network
                             Assets</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/users-list"><i class="bi bi-people"></i>&nbsp&nbspUsers</a>
+                        <a class="nav-link" href="/users-list"><i class="bi bi-people"></i>&nbsp;&nbsp;Users</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav d-flex">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-person-circle"></i>&nbsp&nbspUser</a>
+                        <a class="nav-link" href="#"><i class="bi bi-person-circle"></i>&nbsp;&nbsp;<span
+                                id="logged"></span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-danger" href="/"><i
@@ -95,38 +96,69 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <form class="row g-3">
+                        <form class="row g-3" id="formAddAssets" novalidate>
                             <div class="col-md-6">
-                                <label for="modal-add-address" class="form-label">Host</label>
-                                <input type="text" class="form-control" id="modal-add-address" name="modal-add-address"
-                                    placeholder="Enter an IP address">
+                                <label for="modalAddHost" class="form-label">Host</label>
+                                <input type="text" class="form-control" id="modalAddHost" name="modalAddHost"
+                                    placeholder="Enter an IP address" required>
+                                <div class="valid-feedback">
+                                    Host is valid.
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid host.
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="modal-add-port" class="form-label">Port</label>
-                                <input type="number" class="form-control" id="modal-add-port" value="22"
-                                    name="modal-add-port">
+                                <label for="modalAddPort" class="form-label">Port</label>
+                                <input type="number" class="form-control" id="modalAddPort" value="22"
+                                    name="modalAddPort" required>
+                                <div class="valid-feedback">
+                                    Port is valid.
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid port.
+                                </div>
                             </div>
                             <div class="col-12">
-                                <label for="modal-add-username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="modal-add-username"
-                                    placeholder="Enter Username" name="modal-add-username">
+                                <label for="modalAddUsername" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="modalAddUsername"
+                                    placeholder="Enter Username" name="modalAddUsername" required>
+                                <div class="valid-feedback">
+                                    Username is valid!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid username.
+                                </div>
                             </div>
                             <div class="col-12">
-                                <label for="modal-add-password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="modal-add-password"
-                                    placeholder="Enter a Password" name="modal-add-password">
+                                <label for="modalAddPassowrd" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="modalAddPassword"
+                                    placeholder="Enter a Password" name="modalAddPassowrd" minlength="8" required>
+                                <div class="valid-feedback" id="password-feedback">
+                                    Password is valid!
+                                </div>
+                                <div class="invalid-feedback" id="password-invalid-feedback">
+                                    Please enter a valid password.
+                                </div>
                             </div>
                             <div class="col-12">
-                                <label for="modal-add-confirm-password" class="form-label">Confirm the Password</label>
-                                <input type="password" class="form-control" id="modal-add-confirm-password"
-                                    placeholder="Type the password again" name="modal-add-confirm-password">
+                                <label for="modalAddConfirmPassword" class="form-label">Confirm the Password</label>
+                                <input type="password" class="form-control" id="modalAddConfirmPassword"
+                                    placeholder="Type the password again" name="modalAddConfirmPassword" minlength="8"
+                                    required>
+                                <div class="valid-feedback" id="confirm-password-feedback">
+                                    Confirm password is valid!
+                                </div>
+                                <div class="invalid-feedback" id="confirm-password-invalid-feedback">
+                                    Please enter a valid password.
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Add</button>
+                    <button type="button" class="btn btn-primary" id="btnAddAsset">Add</button>
                 </div>
             </div>
         </div>
@@ -142,39 +174,69 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <form class="row g-3">
+                        <form class="row g-3" id="formUpdateAssets" novalidate>
                             <div class="col-md-6">
-                                <label for="modal-update-address" class="form-label">Host</label>
-                                <input type="text" class="form-control" id="modal-update-address"
-                                    name="modal-update-address" placeholder="Enter an IP address">
+                                <label for="modalUpdateHost" class="form-label">Host</label>
+                                <input type="text" class="form-control" id="modalUpdateHost" name="modalUpdateHost"
+                                    placeholder="Enter an IP address" required>
+                                <div class="valid-feedback">
+                                    Host is valid.
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid host.
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="modal-update-port" class="form-label">Port</label>
-                                <input type="number" class="form-control" id="modal-update-port" value="22"
-                                    name="modal-update-port">
+                                <label for="modalUpdatePort" class="form-label">Port</label>
+                                <input type="number" class="form-control" id="modalUpdatePort" value="22"
+                                    name="modalUpdatePort" required>
+                                <div class="valid-feedback">
+                                    Port is valid.
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid port.
+                                </div>
                             </div>
                             <div class="col-12">
-                                <label for="modal-update-username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="modal-update-username"
-                                    placeholder="Enter Username" name="modal-update-username">
+                                <label for="modalUpdateUsername" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="modalUpdateUsername"
+                                    placeholder="Enter Username" name="modalUpdateUsername" required>
+                                <div class="valid-feedback">
+                                    Username is valid!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid username.
+                                </div>
                             </div>
                             <div class="col-12">
-                                <label for="modal-update-password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="modal-update-password"
-                                    placeholder="Enter a Password" name="modal-update-password">
+                                <label for="modalUpdatePassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="modalUpdatePassword"
+                                    placeholder="Enter a Password" name="modalUpdatePassword" required>
+                                <div class="valid-feedback">
+                                    Password is valid!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid password.
+                                </div>
                             </div>
                             <div class="col-12">
-                                <label for="modal-update-confirm-password" class="form-label">Confirm the
+                                <label for="modalUpdateConfirmPassword" class="form-label">Confirm the
                                     Password</label>
-                                <input type="password" class="form-control" id="modal-update-confirm-password"
-                                    placeholder="Type the password again" name="modal-update-confirm-password">
+                                <input type="password" class="form-control" id="modalUpdateConfirmPassword"
+                                    placeholder="Type the password again" name="modalUpdateConfirmPassword" required>
+                                <div class="valid-feedback">
+                                    Confirm password is valid!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please enter a valid password.
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Update</button>
+                    <button type="button" class="btn btn-primary" id="btnUpdateAsset">Update</button>
                 </div>
             </div>
         </div>
@@ -201,7 +263,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-danger" id="btnDeleteAsset">Delete</button>
                 </div>
             </div>
         </div>

@@ -19,6 +19,7 @@ export const insertAsset = async (req, res) => {
 
         res.status(201).json({
             message: "Asset created successfully",
+            status: "success",
             asset,
         });
 
@@ -26,6 +27,7 @@ export const insertAsset = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             message: "Error creating asset",
+            status: "error",
             error,
         });
     }
@@ -50,9 +52,9 @@ export const getAllAssets = async (req, res) => {
 
 export const getOneAsset = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { assetId } = req.params;
 
-        const asset = await readOneAsset(id);
+        const asset = await readOneAsset(assetId);
 
         res.status(200).json({
             message: "Asset fetched successfully",
@@ -68,13 +70,13 @@ export const getOneAsset = async (req, res) => {
 
 export const updateOneAsset = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { assetId } = req.params;
         const { host, port, username, password, userId } = req.body;
 
         // Encrypt password
         const encryptedPassword = cryptojs.AES.encrypt(password, process.env.SECRET_KEY_AES).toString();
 
-        const asset = await updateAsset(id, {
+        const asset = await updateAsset(assetId, {
             host,
             port,
             username,
@@ -85,24 +87,27 @@ export const updateOneAsset = async (req, res) => {
         res.status(200).json({
             message: "Asset updated successfully",
             asset,
+            status: "success"
         });
 
     } catch (error) {
         res.status(500).json({
             message: "Error updating asset",
             error,
+            status: "error"
         });
     }
 }
 
 export const deleteOneAsset = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { assetId } = req.params;
 
-        await deleteAsset(id);
+        await deleteAsset(assetId);
 
         res.status(200).json({
             message: "Asset deleted successfully",
+            status: "success"
         });
     } catch (error) {
         res.status(500).json({

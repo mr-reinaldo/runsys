@@ -40,9 +40,9 @@ app.set('io', io);
 // Start server
 server.listen(process.env.PORT, () => {
     console.log(`
-    Server running!
-    Listening on: http://localhost:${process.env.PORT}
+        Server running!
+        Listening on: http://localhost:${process.env.PORT}
 
-    Press CTRL+C to stop
+        Press CTRL+C to stop
     `);
 });
