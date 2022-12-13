@@ -1,4 +1,9 @@
+@import url('../font/Roboto-Regular.ttf');
+
+
 body {
+
+    font-family: "Roboto", sans-serif;
     background-color: #d7dde3;
 }
 

@@ -1,5 +1,14 @@
-# node module
+# Node Modules
 node_modules
 
-# Environment variables
+# Vscode
+.vscode
+
+# Prisma migrations
+prisma/migrations
+
+# Prisma dev data
+prisma/dev.db
+
+# Keep environment variables out of version control
 .env

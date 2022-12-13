@@ -32,6 +32,7 @@ export const readAllUsers = async () => {
                     id: true,
                     username: true,
                     email: true,
+                    password: true,
                 },
             },
         );
@@ -85,6 +86,12 @@ export const findUserById = async (id) => {
     return prisma.user.findUnique({
         where: {
             id,
+        },
+        select: {
+            id: true,
+            username: true,
+            email: true,
+            password: true,
         },
     });
 }

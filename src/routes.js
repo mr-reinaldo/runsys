@@ -17,7 +17,7 @@ import { isAuthenticated } from './middleware/auth.js';
 
 // Controllers
 import { insertUser, getAllUsers, getOneUser, editUser, removeUser } from './controllers/user.controller.js';
-import { insertAsset, getAllAssets, getAllAssetsByUserId, getOneAsset, deleteOneAsset } from './controllers/asset.controller.js';
+import { insertAsset, getAllAssets, getAllAssetsByUserId, getOneAsset, deleteOneAsset, updateOneAsset } from './controllers/asset.controller.js';
 import { serverController } from './controllers/server.controller.js';
 import { signin } from './controllers/signin.controller.js';
 
@@ -68,16 +68,17 @@ router.post('/terminal', isAuthenticated, async (req, res) => {
 // User routes
 router.post('/users', insertUser);
 router.get('/users', isAuthenticated, getAllUsers);
-router.get('/users/:id', isAuthenticated, getOneUser);
-router.put('/users/:id', isAuthenticated, editUser);
-router.delete('/users/:id', isAuthenticated, removeUser);
+router.get('/users/:userId', isAuthenticated, getOneUser);
+router.put('/users/:userId', isAuthenticated, editUser);
+router.delete('/users/:userId', isAuthenticated, removeUser);
 
 // Asset routes
 router.post('/assets', isAuthenticated, insertAsset);
 router.get('/assets', isAuthenticated, getAllAssets);
-router.get('/assets/one/:id', isAuthenticated, getOneAsset);
+router.get('/assets/one/:assetId', isAuthenticated, getOneAsset);
 router.get('/assets/user/:userId', isAuthenticated, getAllAssetsByUserId);
-router.delete('/assets/:id', isAuthenticated, deleteOneAsset);
+router.delete('/assets/:assetId', isAuthenticated, deleteOneAsset);
+router.put('/assets/:assetId', isAuthenticated, updateOneAsset);
 
 // Server routes
 router.get('/server', isAuthenticated, serverController);

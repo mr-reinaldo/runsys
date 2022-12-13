@@ -1,6 +1,7 @@
 import { createUser, readAllUsers, findUserById, upadateUser, deleteUser } from "../repository/user.repository.js";
 import bcrypt from "bcrypt";
 
+
 export const insertUser = async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -54,9 +55,9 @@ export const getAllUsers = async (req, res) => {
 
 export const getOneUser = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { userId } = req.params;
 
-        const user = await findUserById(id);
+        const user = await findUserById(userId);
 
         if (!user) {
             return res.status(404).json({
@@ -78,10 +79,10 @@ export const getOneUser = async (req, res) => {
 
 export const editUser = async (req, res) => {
     try {
-        const { id } = req.params;
-        const { username, email, password } = req.body;
+        const { userId } = req.params;
+        const { username, email, previousPassword, newPassword } = req.body;
 
-        const user = await findUserById(id);
+        const user = await findUserById(String(userId));
 
         if (!user) {
             return res.status(404).json({
@@ -89,9 +90,20 @@ export const editUser = async (req, res) => {
             });
         }
 
-        const hashedPassword = await bcrypt.hash(password, Number(process.env.SALT_ROUNDS));
+        // Check if password is correct
+        const isPasswordCorrect = await bcrypt.compare(previousPassword, user.password);
 
-        const updatedUser = await upadateUser(id, {
+        if (!isPasswordCorrect) {
+            return res.status(400).json({
+                message: "Password is incorrect",
+                status: "error",
+            });
+        }
+
+        // Hash new password
+        const hashedPassword = await bcrypt.hash(newPassword, Number(process.env.SALT_ROUNDS));
+
+        const updatedUser = await upadateUser(String(userId), {
             username,
             email,
             password: hashedPassword,
@@ -99,8 +111,10 @@ export const editUser = async (req, res) => {
 
         return res.status(200).json({
             message: "User updated successfully",
-            user: updatedUser,
+            status: "success",
+            updatedUser,
         });
+
     } catch (error) {
         return res.status(500).json({
             message: "Something went wrong",
@@ -111,20 +125,22 @@ export const editUser = async (req, res) => {
 
 export const removeUser = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { userId } = req.params;
 
-        const user = await findUserById(id);
+        const user = await findUserById(String(userId));
 
         if (!user) {
             return res.status(404).json({
                 message: "User not found",
+                status: "error",
             });
         }
 
-        await deleteUser(id);
+        await deleteUser(String(userId));
 
         return res.status(200).json({
             message: "User deleted successfully",
+            status: "success",
         });
     } catch (error) {
         return res.status(500).json({

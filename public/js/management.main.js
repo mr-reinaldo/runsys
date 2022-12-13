@@ -134,6 +134,8 @@ async function formSelect() {
 
 
 if (Auth.isAuthenticated()) {
+    Auth.userLogged();
+    Auth.autoSignout();
     startXTerminal();
     await formSelect();
     await startConnection();
