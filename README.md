@@ -5,13 +5,15 @@ RunSys é uma idéia de projeto para disciplina de Desenvolvimento Web do IFPB -
 
 ## Screenshots
 
-![App Screenshot](./screenshots/dashboard.png)
+![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-45-31.png)
 
-![App Screenshot](./screenshots/ativos.png)
+![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-46-22.png)
 
-![App Screenshot](./screenshots/usuarios.png)
+![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-50-04.png)
 
-![App Screenshot](./screenshots/gerenciamento.png)
+![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-46-47.png)
+
+![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-47-03.png)
 
 ## Live Preview
 
@@ -21,7 +23,7 @@ RunSys é uma idéia de projeto para disciplina de Desenvolvimento Web do IFPB -
 
 - Início.
   - Chart do trafico de rede.
-  - Status de uso de Memoria e CPU.
+  - Chart de uso de Memoria e CPU.
   - Uptime do servidor.
   - Card com informações do sistema operacional.
 - Ativos de Rede.
@@ -35,7 +37,7 @@ RunSys é uma idéia de projeto para disciplina de Desenvolvimento Web do IFPB -
 
 **Front-end:** HTML, CSS, Boostrap, Javascript.
 
-**Back-end:** Node, Express, Sequelize, SSH2, bcrypt, crypto-js, systeminformation, ejs, sqlite3, dotenv.
+**Back-end:** Node, Express, Prisma, SSH2, bcrypt, crypto-js, systeminformation, mysql, dotenv.
 
 ## Variáveis de Ambiente
 
