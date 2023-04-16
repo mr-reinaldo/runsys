@@ -67,7 +67,7 @@ Em seguida, acesse o endereço http://localhost:3000 no seu navegador.
 
 ## 🚀 Sobre nós
 
-Somos um grupo de estudantes do IFPB - Campus João Pessoa, que estão cursando o 3º período do curso de Redes de Computadores.
+Somos um grupo de estudantes do IFPB - Campus João Pessoa, que estão cursando o 4º período do curso de Redes de Computadores.
 
 ### 👨‍💻 Equipe:
 
