@@ -22,10 +22,18 @@ function getUserSession() {
     return { userId, username, exp };
 }
 
+
+// login user
 function signin(token) {
+
+    // add token to localStorage
     localStorage.setItem('@runsys:token', token);
+
+    // redirect to dashboard
     window.location.href = '/dashboard';
+
 }
+
 
 // logged out user
 function userLogged() {
@@ -52,16 +60,23 @@ function autoSignout() {
 
 }
 
+function signoutBtn() {
+    const navItemLogout = document.querySelector('.nav-item a#logout');
+
+    navItemLogout.addEventListener('click', () => {
+        localStorage.removeItem('@runsys:token');
+        window.location.href = '/';
+    });
+}
+
 function signout() {
     localStorage.removeItem('@runsys:token');
-
     window.location.href = '/';
 }
 
 
 
 
-
-export default { isAuthenticated, getToken, signin, signout, getUserSession, autoSignout, userLogged };
+export default { isAuthenticated, getToken, signin, signout, getUserSession, autoSignout, userLogged, signoutBtn };
 
 

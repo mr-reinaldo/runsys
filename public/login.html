@@ -13,47 +13,92 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="card col-lg-5 col-md-6 col-12 mx-auto p-3 py-5 bg-light shadow">
-            <div class="card-body">
-                <h2 class="text-center mb-4">Run<i class="bi bi-gear-wide"></i>Sys</h2>
-                <p class="text-center text-secondary"><small>Sign in With</small></p>
-                <form class="needs-validation" novalidate>
-                    <div class="form-group d-flex mb-4 px-3 shadow-sm rounded-1 has-validation position-relative">
-                        <i class="bi bi-envelope-at-fill my-auto"></i>
-                        <input type="email" autocomplete="off" class="form-control" id="email" placeholder="E-mail"
-                            name="email" required>
-                        <div class="invalid-tooltip rounded-1">
-                            <small> Enter the user's email.</small>
+
+    <body class="bg-body-light vh-100">
+        <div class="container-fluid h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-md-6 col-lg-4">
+                    <!-- Aréa para Alertas -->
+                    <div id="divAlerts"></div>
+                    <div class="card vh-75 shadow rounded-1">
+                        <div class="card-body bg-light">
+                            <ul class="nav nav-tabs" id="authTabs" role="tablist">
+                                <li class="nav-item w-50" role="presentation">
+                                    <a class="nav-link active text-dark fw-bold" id="loginTab" data-bs-toggle="tab"
+                                        href="#login" role="tab" aria-controls="login" aria-selected="true"><i
+                                            class="bi bi-door-open"></i> Entrar no
+                                        Sistema</a>
+                                </li>
+                                <li class="nav-item w-50" role="presentation">
+                                    <a class="nav-link text-info fw-bold" id="registerTab" data-bs-toggle="tab"
+                                        href="#register" role="tab" aria-controls="register" aria-selected="false"><i
+                                            class="bi bi-pencil-square"></i>
+                                        Cadastrar-se</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="authTabsContent">
+                                <div class="tab-pane fade show active bg-light" id="login" role="tabpanel"
+                                    aria-labelledby="loginTab">
+                                    <!-- Conteúdo da tab de login -->
+                                    <h2 class="text-center mt-3 mb-5">Run<i class="bi bi-gear-wide"></i>Sys</h2>
+
+                                    <!-- Formulário de login -->
+                                    <form class="needs-validation" id="formLogin" action="post" novalidate>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="loginEmail"
+                                                placeholder="E-mail" name="email" required>
+                                            <label for="loginEmail">E-mail</label>
+                                            <div class="invalid-feedback">Por favor, informe um e-mail válido.</div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="password" class="form-control" id="loginPassword"
+                                                placeholder="Senha" minlength="8" name="password" required>
+                                            <label for="loginPassword">Senha</label>
+                                            <div class="invalid-feedback">Por favor, informe uma senha de no mínimo 8
+                                                caracteres.</div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="registerTab">
+                                    <!-- Conteúdo da tab de cadastro -->
+                                    <h2 class="text-center mt-3 mb-3">Run<i class="bi bi-gear-wide"></i>Sys</h2>
+
+                                    <!-- Formulário de cadastro -->
+                                    <form class="needs-validation" id="formRegister" action="post" novalidate>
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="registerName"
+                                                placeholder="Nome do Usuário" name="username" required>
+                                            <label for="registerName">Nome de Usuário</label>
+                                            <div class="invalid-feedback">Por favor, informe um nome válido.</div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="registerEmail"
+                                                placeholder="E-mail" name="email" required>
+                                            <label for="loginEmail">E-mail</label>
+                                            <div class="invalid-feedback">Por favor, informe um e-mail válido.</div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="password" class="form-control" id="registerPassword"
+                                                name="password" placeholder="Senha" minlength="8" required>
+                                            <label for="loginPassword">Senha</label>
+                                            <div class="invalid-feedback">Por favor, informe uma senha de no mínimo 8
+                                                caracteres.</div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">Register-se</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group d-flex mb-3 px-3 shadow-sm rounded-1 has-validation position-relative">
-                        <i class="bi bi-shield-lock-fill my-auto"></i>
-                        <input type="password" autocomplete="off" class="form-control " id="password"
-                            placeholder="Password" name="password" minlength="8" required>
-                        <div class="invalid-tooltip rounded-1">
-                            <small> Enter the password with 8 characters or more.</small>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <button type="submit" class="btn btn-secondary w-50 rounded-1">Sign in</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="position-absolute top-0 end-0 p-3" style="z-index: 11">
-            <div id="liveToast" class="toast bg-warning" role="alert" aria-live="assertive" aria-atomic="true"
-                data-bs-delay="4000">
-                <div class="toast-header">
-                    <strong class="me-auto"></strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="js/login.main.js"></script>
-</body>
+
+        <!-- Bootstrap JS -->
+        <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="module" src="js/login.main.js"></script>
+    </body>
 
 </html>

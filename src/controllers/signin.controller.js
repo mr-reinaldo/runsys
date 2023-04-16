@@ -17,11 +17,20 @@ export const signin = async (req, res) => {
                 { expiresIn: 3600 } // 1h
             );
 
-            res.json({ auth: true, token });
+            res.json({
+                message: 'User logged in successfully',
+                auth: true,
+                token
+            });
         } else {
-            throw new Error('User not found');
+            throw new Error(
+                'Invalid credentials'
+            );
         }
     } catch (error) {
-        res.status(401).json({ error: 'User not found' });
+        res.status(401).json({
+            message: 'User not found',
+            error: error.message
+        });
     }
 }

@@ -249,6 +249,7 @@ async function updateUsers(userId) {
 if (Auth.isAuthenticated()) {
     Auth.userLogged();
     Auth.autoSignout();
+    Auth.signoutBtn();
     mountTableUsers();
     addUsers();
 }

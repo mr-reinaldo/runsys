@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
 
 // Dashboard route
 router.get('/dashboard', (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "public", "dashboard.html"));
+    res.sendFile(path.join(__dirname, "../public/dashboard.html"));
 });
 
 // Network Assets route.

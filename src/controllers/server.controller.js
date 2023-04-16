@@ -56,7 +56,7 @@ export const serverController = async (req, res) => {
     async function diskUsage() {
         // get % of disk usage
         const data = await systeminformation.fsSize();
-        return Math.round(data[3].use);
+        return Math.round(data[0].use);
     }
 
 

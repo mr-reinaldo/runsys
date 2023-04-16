@@ -1,10 +1,11 @@
-FROM node:18-alpine
+FROM node:19-alpine3.16
 
 WORKDIR /usr/app
 
 COPY . .
 
-RUN npm i
+
+RUN npm ci
 
 EXPOSE 3000
 

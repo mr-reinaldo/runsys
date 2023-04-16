@@ -11,6 +11,7 @@ export const insertUser = async (req, res) => {
 
         if (userExists) {
             return res.status(400).json({
+                success: false,
                 message: "User already exists",
             });
 
@@ -26,11 +27,13 @@ export const insertUser = async (req, res) => {
         });
 
         return res.status(201).json({
+            success: true,
             message: "User created successfully",
             user,
         });
     } catch (error) {
         return res.status(500).json({
+            success: false,
             message: "Something went wrong",
             error: error.message,
         });

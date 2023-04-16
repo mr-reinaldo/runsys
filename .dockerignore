@@ -1,4 +1,7 @@
 node_modules
 .vscode
-prisma/migrations
-prisma/dev.db
+.env.example
+.gitignore
+.docker-compose.yaml
+README.md
+screenshots

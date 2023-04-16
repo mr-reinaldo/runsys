@@ -311,6 +311,7 @@ async function deleteAssets(assetId) {
 if (Auth.isAuthenticated()) {
     Auth.userLogged();
     Auth.autoSignout();
+    Auth.signoutBtn();
     addAssets();
     mountTableAssets();
 }

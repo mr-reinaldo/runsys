@@ -13,7 +13,7 @@ async function getServerInformation() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${Auth.getToken()}`,
+                'Authorization': `Bearer ${Auth.getToken()}`
             },
         });
 
@@ -185,6 +185,7 @@ async function main() {
 if (Auth.isAuthenticated()) {
     Auth.userLogged();
     Auth.autoSignout();
+    Auth.signoutBtn();
     main();
 }
 

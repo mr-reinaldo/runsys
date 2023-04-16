@@ -5,19 +5,16 @@ RunSys é uma idéia de projeto para disciplina de Desenvolvimento Web do IFPB -
 
 ## Screenshots
 
-![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-45-31.png)
+![App Screenshot](./screenshots/page-login.png)
 
-![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-46-22.png)
+![App Screenshot](./screenshots/dashboard-page.png)
 
-![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-50-04.png)
+![App Screenshot](./screenshots/management-page.png)
 
-![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-46-47.png)
+![App Screenshot](./screenshots/devices-pages.png)
 
-![App Screenshot](./screenshots/Captura%20de%20tela%20de%202022-12-08%2022-47-03.png)
+![App Screenshot](./screenshots/users-page.png)
 
-## Live Preview
-
-[![MIT License](https://img.shields.io/badge/Live-Preview-green.svg)](https://dw-runsys.mr-reinaldo.repl.co/)
 
 ## Funcionalidades
 
@@ -41,37 +38,36 @@ RunSys é uma idéia de projeto para disciplina de Desenvolvimento Web do IFPB -
 
 ## Variáveis de Ambiente
 
-Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
+Para rodar esse projeto, configurar as variáveis de ambiente dentro do .env renomeio o .env.example para .env ee preencha as variáveis de ambiente.
 
-`PORT_PROJECT`
+## Requisitos de instalação
 
-`SECRET_KEY`
+- Docker e Docker Compose.
 
 ## Rodando localmente
 
 Clone o projeto
 
 ```bash
-  git clone https://github.com/mr-reinaldo/DW-RunSys.git
+  git clone https://github.com/mr-reinaldo/runsys.git
 ```
 
 Entre no diretório do projeto
 
 ```bash
-  cd DW-RunSys
+  cd runsys
 ```
-
-Instale as dependências
 
 ```bash
-  npm install
+  docker-compose up -d
 ```
 
-Inicie o servidor
+Em seguida, acesse o endereço http://localhost:3000 no seu navegador.
 
-```bash
-  npm run start
-```
+
+## 🚀 Sobre nós
+
+Somos um grupo de estudantes do IFPB - Campus João Pessoa, que estão cursando o 3º período do curso de Redes de Computadores.
 
 ### 👨‍💻 Equipe:
 
